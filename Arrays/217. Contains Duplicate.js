@@ -1,36 +1,30 @@
 class Solution {
   /**
-   * @param {number[]} nums
-   * @return {boolean}
-   */ // Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
-
-  // Example 1, Input: nums = [1, 2, 3, 3]
-  // Output = true
-
-  // Example 2, Input: nums = [1, 2, 3, 4]
-  // Output: false
-
-  // Brute force O(n^2) solution
+   * @param {number[]} nums - An array of numbers that may contain duplicates.
+   * @return {boolean} - Return true if any number appears more than once, otherwise false.
+   */
   hasDuplicate(nums) {
-    for (let i = 0; i < nums.length; i++) {
-      for (let j = i + 1; j < nums.length; j++) {
-        if (nums[i] === nums[j]) {
-          // i = 2,  3 = 3
-          return true;
-        }
-      }
-    }
-    return false;
-  }
+      // Create a Set to track numbers that we've seen already.
+      let set = new Set();
 
-  // Better solution O(nlogn) Sorting + Lopp
-  hasDuplicate(nums) {
-    nums.sort((a, b) => a - b); // Sort Array in Ascending order [1,2,3,3]
-    for (let i = 1; i < nums.length; i++) {
-      if (nums[i] === nums[i - 1]) {
-        return true;
+      // Iterate over each number in the array.
+      for (const num of nums) {
+          // Check if the current number is already in the set.
+          if (set.has(num)) {
+              // If the number is in the set, it means we've seen it before, so we return true.
+              return true;
+          } else {
+              // If the number is not in the set, add it to the set.
+              set.add(num);
+          }
       }
-    }
-    return false;
+
+      // If the loop finishes without finding a duplicate, return false.
+      return false;
   }
 }
+
+
+// Time Complexity: O(n)
+// - We iterate through the array once, where `n` is the length of the array. 
+
