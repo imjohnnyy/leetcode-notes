@@ -7,17 +7,26 @@ class Solution {
      */    //  e.g. nums = [3,4,5,6], target = 7
      
     //  Optimal solution O(n) 
-        twoSum(nums, target) {
-            let map = new Map();  
-
-            for (let i = 0; i < nums.length; i++) {
-                const diff = target - nums[i];  // 7 - 4 = 3
-                if (map.has(diff)) {          
-                    return [map.get(diff), i]; // [0, 1]
-                }
-                map.set(nums[i], i);        // {3: 1}
+    twoSum(nums, target) {
+        // Create a map to store each number and its index as we iterate through the array
+        let map = new Map();
+    
+        // Loop through the array to check for each element
+        for (let i = 0; i < nums.length; i++) {
+            // Calculate the complement that we need to find in the map
+            let complement = target - nums[i];
+    
+            // Check if the complement is already in the map
+            if (map.has(complement)) {
+                // If found, return the indices of the complement and the current number
+                return [map.get(complement), i];
             }
+            // Otherwise, store the current number and its index in the map
+            map.set(nums[i], i);
         }
+    
+        // If no solution is found, return an empty array (optional, but good practice)
+        return [];
     }
 
 
