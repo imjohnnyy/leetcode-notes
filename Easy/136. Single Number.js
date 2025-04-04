@@ -24,3 +24,26 @@ class Solution {
         return Array.from(seen)[0];
     }
 }
+
+
+// Hash map approach - Time Complexity of O(n)
+function singleNumber(nums) {
+
+    // Use a Hashmap to store the key for elements in the nums arr. And store the number of occurrences for that element as the value.
+    let map = new Map();
+  
+    for (let i = 0; i < nums.length; i++) {
+      if (map.has(nums[i])) {
+        map.set(nums[i], map.get(nums[i]) + 1); // Increment the count for the existing number
+      } else {
+        map.set(nums[i], 1); // Initialize the count to 1 for the first occurrence
+      }
+    }
+  
+    // Find and return the number that appears only once in the map, 
+    for (let [key, value] of map) {
+      if (value === 1) {
+        return key;
+      }
+    }
+  }
