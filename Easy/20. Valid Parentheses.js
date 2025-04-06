@@ -21,9 +21,7 @@ var isValid = function(s) {
         } else if (s[i] === "{") {
             stack.push("}");  // Expected closing bracket is '}'
         } 
-        // If the current character is a closing bracket, check if it matches the top of the stack
-        else if (s[i] !== stack.pop()) {
-            // If the current character doesn't match the expected closing bracket, return false immediately
+        else if (s[i] !== stack.pop()) {  // If the current character is a closing bracket and it does not match the bracket at the top of the stack, we return false.
             return false;
         }
     }
