@@ -4,7 +4,14 @@ class Solution {
      * @param {number} target
      * @return {number[]}
      * 
+     *                      0 1
      */    //  e.g. nums = [3,4,5,6], target = 7
+     
+    //  Solution - O(n):
+    //  * 1. We use a hash map (Map) to store the numbers we encounter and their corresponding indices.
+    //  * 2. For each number in the array, we compute the complement (target - current number).
+    //  * 3. If the complement exists in the map, we immediately return the indices of the two numbers.
+    //  * 4. If not, we continue iterating and add the current number to the map with its index.
      
     //  Optimal solution O(n) 
     twoSum(nums, target) {
